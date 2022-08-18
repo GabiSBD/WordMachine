@@ -65,6 +65,12 @@ class PanelPrincipal extends JPanel {
         panelTexto.add(scroll);
         add(panelTexto, BorderLayout.CENTER);
 
+        //----------------------------contruimos el JPopupMenu---------------------------------
+        menuDeslizante=new JToolBar();
+        n= new JButton(new ImageIcon()); menuDeslizante.add(n);
+        k= new JButton(); menuDeslizante.add(n);
+        s= new JButton(); menuDeslizante.add(s);
+
         //--------------------------ponemos los items del menu suoerior a la escucha---------------------
         setListener();
 
@@ -99,6 +105,7 @@ class PanelPrincipal extends JPanel {
         }
     }
 
+
    /* private class ActionItem implements ActionListener{
 
         @Override
@@ -127,7 +134,9 @@ class PanelPrincipal extends JPanel {
     private JMenuBar barraMenu;
     private JMenu fuente, estilo, tamagno;
     private JMenuItem arial,cambria , verdana, negrita, cursiva,subrayado;
-   private JRadioButton tamagno_12, tamagno_16, tamagno_18, tamagno_20;
+    private JRadioButton tamagno_12, tamagno_16, tamagno_18, tamagno_20;
+    private JToolBar menuDeslizante;
+    private JButton n,k,s;
     private JTextPane hoja;
     private Font currentFont;
 }
