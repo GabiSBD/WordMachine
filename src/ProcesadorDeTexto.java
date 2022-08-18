@@ -1,10 +1,8 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+
 import javax.swing.text.StyledEditorKit;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
@@ -66,18 +64,32 @@ class PanelPrincipal extends JPanel {
         add(panelTexto, BorderLayout.CENTER);
 
         //----------------------------contruimos el JPopupMenu---------------------------------
-        menuDeslizante=new JToolBar();
-        n= new JButton(new ImageIcon()); menuDeslizante.add(n);
-        k= new JButton(); menuDeslizante.add(n);
-        s= new JButton(); menuDeslizante.add(s);
+        menuDeslizante=new JToolBar(JToolBar.VERTICAL);
 
+        n= new JButton(new ImageIcon("B.png")); menuDeslizante.add(n);
+        k= new JButton(new ImageIcon("I.png")); menuDeslizante.add(k);
+        s= new JButton(new ImageIcon("U.png")); menuDeslizante.add(s);
+
+        menuDeslizante.addSeparator();
+
+        red=new JButton(new ImageIcon("red.png")); menuDeslizante.add(red);
+        green=new JButton(new ImageIcon("green.png")); menuDeslizante.add(green);
+        blue=new JButton(new ImageIcon("blue.png")); menuDeslizante.add(blue);
+
+        menuDeslizante.addSeparator();
+
+        alinLeft=new JButton(new ImageIcon("Izq.png"));menuDeslizante.add(alinLeft);
+        alinCenter=new JButton(new ImageIcon("Center.png"));menuDeslizante.add(alinCenter);
+        alinRight=new JButton(new ImageIcon("Drch.png"));menuDeslizante.add(alinRight);
+
+        add(menuDeslizante,BorderLayout.WEST);
         //--------------------------ponemos los items del menu suoerior a la escucha---------------------
         setListener();
 
         //----------------ponemos atajos de teclado para los actionlisteners de los item-----------------
-        cursiva.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, InputEvent.CTRL_DOWN_MASK));
-        negrita.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,InputEvent.CTRL_DOWN_MASK));
-        subrayado.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,InputEvent.CTRL_DOWN_MASK));
+        cursiva.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
+        negrita.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B,InputEvent.CTRL_DOWN_MASK));
+        subrayado.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,InputEvent.CTRL_DOWN_MASK));
 
 
     }
@@ -105,38 +117,13 @@ class PanelPrincipal extends JPanel {
         }
     }
 
-
-   /* private class ActionItem implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            currentFont=hoja.getFont();
-            //------------------------------botones de fuente----------------------
-               if(e.getSource()==arial) hoja.setFont(new Font("Arial",currentFont.getStyle(),currentFont.getSize()));
-               else if(e.getSource()==cambria)hoja.setFont(new Font("Cambria",currentFont.getStyle(),currentFont.getSize()));
-               else if(e.getSource()==verdana)hoja.setFont(new Font("Verdana",currentFont.getStyle(),currentFont.getSize()));
-              //-----------------------------botones de estilo---------------------------------
-               else if(e.getSource()==negrita) hoja.setFont(new Font(currentFont.getFontName(),currentFont.getStyle()+Font.BOLD,currentFont.getSize()));
-               else if(e.getSource()==cursiva) hoja.setFont(new Font(currentFont.getFontName(),currentFont.getStyle()+Font.ITALIC,currentFont.getSize()));
-               else if(e.getSource()==normal) hoja.setFont(new Font(currentFont.getFontName(),Font.PLAIN,currentFont.getSize()));
-               //---------------------------botones tamaño---------------------------
-               else if(e.getSource()==tamagno_12) hoja.setFont(new Font(currentFont.getFontName(),currentFont.getStyle(),12));
-               else if(e.getSource()==tamagno_16) hoja.setFont(new Font(currentFont.getFontName(),currentFont.getStyle(),16));
-               else if(e.getSource()==tamagno_18) hoja.setFont(new Font(currentFont.getFontName(),currentFont.getStyle(),18));
-               else if(e.getSource()==tamagno_20) hoja.setFont(new Font(currentFont.getFontName(),currentFont.getStyle(),20));
-
-
-        }
-    }*/
-
-
     private JPanel panelMenu;
     private JMenuBar barraMenu;
     private JMenu fuente, estilo, tamagno;
     private JMenuItem arial,cambria , verdana, negrita, cursiva,subrayado;
     private JRadioButton tamagno_12, tamagno_16, tamagno_18, tamagno_20;
     private JToolBar menuDeslizante;
-    private JButton n,k,s;
+    private JButton n,k,s,red,green,blue,alinLeft,alinCenter,alinRight;
     private JTextPane hoja;
-    private Font currentFont;
+
 }
