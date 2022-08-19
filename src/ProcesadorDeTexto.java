@@ -34,9 +34,9 @@ class PanelPrincipal extends JPanel {
         cambria= new JMenuItem("Cambria"); fuente.add(cambria);
         verdana= new JMenuItem("Verdana"); fuente.add(verdana);
 
-        negrita= new JMenuItem("Negrita"); estilo.add(negrita);
-        cursiva= new JMenuItem("Cursiva"); estilo.add(cursiva);
-        subrayado= new JMenuItem("Subrayado"); estilo.add(subrayado);
+        negrita= new JMenuItem("Bold",new ImageIcon("B.png")); estilo.add(negrita);
+        cursiva= new JMenuItem("Italic", new ImageIcon("I.png")); estilo.add(cursiva);
+        subrayado= new JMenuItem("Underline", new ImageIcon("U.png")); estilo.add(subrayado);
 
         ButtonGroup tamagnogrupo=new ButtonGroup();
 
@@ -64,9 +64,9 @@ class PanelPrincipal extends JPanel {
         //----------------------------contruimos el JPopupMenu---------------------------------
         menuDeslizante=new JToolBar(JToolBar.VERTICAL);
 
-        n= new JButton("n",new ImageIcon("B.png")); menuDeslizante.add(n);
-        k= new JButton("k",new ImageIcon("I.png")); menuDeslizante.add(k);
-        s= new JButton("s",new ImageIcon("U.png")); menuDeslizante.add(s);
+        b= new JButton("b",new ImageIcon("B.png")); menuDeslizante.add(b);
+        i= new JButton("i",new ImageIcon("I.png")); menuDeslizante.add(i);
+        u= new JButton("u",new ImageIcon("U.png")); menuDeslizante.add(u);
 
         menuDeslizante.addSeparator();
 
@@ -84,7 +84,7 @@ class PanelPrincipal extends JPanel {
         //--------------------------ponemos los items del menu suoerior a la escucha---------------------
         setListener();
         //--------------------borro los text de los botones para que no se reflejen en la interfaz,les puse text porque me ahorro codigo en el setlistener------------------
-        JButton[]quitText={n,k,s,red,green,blue,alinLeft,alinCenter,alinRight};
+        JButton[]quitText={b,i,u,red,green,blue,alinLeft,alinCenter,alinRight};
         for(JButton boton:quitText) boton.setText("");
 
         //----------------ponemos atajos de teclado para los actionlisteners de los item-----------------
@@ -97,7 +97,7 @@ class PanelPrincipal extends JPanel {
 
     private  void setListener(){
         AbstractButton[]items= {arial,cambria,verdana,cursiva,negrita,subrayado,tamagno_12,tamagno_16,tamagno_18,
-                tamagno_20,n,k,s,red,green,blue,alinLeft,alinCenter,alinRight};
+                tamagno_20,b,i,u,red,green,blue,alinLeft,alinCenter,alinRight};
 
         for (AbstractButton item : items) {
             if(item.getText().equalsIgnoreCase("arial")||item.getText().equalsIgnoreCase("cambria")
@@ -107,13 +107,13 @@ class PanelPrincipal extends JPanel {
 
             }
 
-           else if(item.getText().equalsIgnoreCase("cursiva")||item.getText().equalsIgnoreCase("k"))
+           else if(item.getText().equalsIgnoreCase("italic")||item.getText().equalsIgnoreCase("i"))
                item.addActionListener(new StyledEditorKit.ItalicAction());
 
-           else if(item.getText().equalsIgnoreCase("negrita")||item.getText().equalsIgnoreCase("n"))
+           else if(item.getText().equalsIgnoreCase("bold")||item.getText().equalsIgnoreCase("b"))
                item.addActionListener(new StyledEditorKit.BoldAction());
 
-           else if(item.getText().equalsIgnoreCase("subrayado")||item.getText().equalsIgnoreCase("s"))
+           else if(item.getText().equalsIgnoreCase("underline")||item.getText().equalsIgnoreCase("u"))
                item.addActionListener(new StyledEditorKit.UnderlineAction());
 
            else if(item.getText().equalsIgnoreCase("red")) item.addActionListener(new StyledEditorKit.ForegroundAction("rojo",Color.RED));
@@ -137,7 +137,7 @@ class PanelPrincipal extends JPanel {
     private JMenuItem arial,cambria , verdana, negrita, cursiva,subrayado;
     private JRadioButton tamagno_12, tamagno_16, tamagno_18, tamagno_20;
     private JToolBar menuDeslizante;
-    private JButton n,k,s,red,green,blue,alinLeft,alinCenter,alinRight;
+    private JButton b,i,u,red,green,blue,alinLeft,alinCenter,alinRight;
     private JTextPane hoja;
 
 }
