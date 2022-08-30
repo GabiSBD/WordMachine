@@ -1,8 +1,13 @@
 import javax.swing.*;
 import javax.swing.text.StyledEditorKit;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.*;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 
 public class ProcesadorDeTexto {
@@ -80,11 +85,17 @@ class PanelPrincipal extends JPanel {
         alinCenter=new JButton("alincenter",new ImageIcon("Center.png"));menuDeslizante.add(alinCenter);
         alinRight=new JButton("alinright",new ImageIcon("Drch.png"));menuDeslizante.add(alinRight);
 
+        menuDeslizante.addSeparator();
+
+        save = new JButton("save",new ImageIcon("save.png")); menuDeslizante.add(save);
+        load = new JButton("load",new ImageIcon("load.png")); menuDeslizante.add(load);
+
         add(menuDeslizante,BorderLayout.WEST);
+
         //--------------------------ponemos los items del menu suoerior a la escucha---------------------
         setListener();
         //--------------------borro los text de los botones para que no se reflejen en la interfaz,les puse text porque me ahorro codigo en el setlistener------------------
-        JButton[]quitText={b,i,u,red,green,blue,alinLeft,alinCenter,alinRight};
+        JButton[]quitText={b, i, u, red, green, blue , alinLeft, alinCenter, alinRight, save, load};
         for(JButton boton:quitText) boton.setText("");
 
         //----------------ponemos atajos de teclado para los actionlisteners de los item-----------------
@@ -95,9 +106,9 @@ class PanelPrincipal extends JPanel {
 
     }
 
-    private  void setListener(){
-        AbstractButton[]items= {arial,cambria,verdana,cursiva,negrita,subrayado,tamagno_12,tamagno_16,tamagno_18,
-                tamagno_20,b,i,u,red,green,blue,alinLeft,alinCenter,alinRight};
+    private  void setListener() {
+        AbstractButton[]items= {arial, cambria, verdana, cursiva, negrita, subrayado, tamagno_12, tamagno_16,
+                tamagno_18, tamagno_20, b, i, u, red, green, blue, alinLeft, alinCenter, alinRight};
 
         for (AbstractButton item : items) {
             if(item.getText().equalsIgnoreCase("arial")||item.getText().equalsIgnoreCase("cambria")
@@ -124,12 +135,45 @@ class PanelPrincipal extends JPanel {
            else if(item.getText().equalsIgnoreCase("alinleft")) item.addActionListener(new StyledEditorKit.AlignmentAction("izq",0));
            else if(item.getText().equalsIgnoreCase("alincenter")) item.addActionListener(new StyledEditorKit.AlignmentAction("izq",4));
            else if(item.getText().equalsIgnoreCase("alinright")) item.addActionListener(new StyledEditorKit.AlignmentAction("drch",2));
-
            else  item.addActionListener(new StyledEditorKit.FontSizeAction("size",Integer.parseInt(item.getText())));
 
         }
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                     file= new PrintStream(JOptionPane.showInputDialog("Introduce nombre y extension del archivo:" +
+                            "\n(.txt,.doc,etc)"));
+                }catch(java.io.FileNotFoundException exception){
+                    System.out.println(exception.getMessage());
+                }
+                file.println(hoja.getText());
+                file.close();
+            }
+            PrintStream file;
+        });
+        load.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    file= new FileInputStream(JOptionPane.showInputDialog("Introduce nombre y extension del archivo:" +
+                            "\n(.txt,.doc,etc)"));
+                    buffer=file.readAllBytes();
+                    String text= new String(buffer, java.nio.charset.StandardCharsets.UTF_8);
+                    hoja.setText(text);
+
+                }catch(FileNotFoundException exception){
+                    System.out.println(exception.getMessage());
+                }catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            byte[]buffer=new byte [0];
+            InputStream file;
+        });
 
     }
+
 
     private JPanel panelMenu;
     private JMenuBar barraMenu;
@@ -137,7 +181,7 @@ class PanelPrincipal extends JPanel {
     private JMenuItem arial,cambria , verdana, negrita, cursiva,subrayado;
     private JRadioButton tamagno_12, tamagno_16, tamagno_18, tamagno_20;
     private JToolBar menuDeslizante;
-    private JButton b,i,u,red,green,blue,alinLeft,alinCenter,alinRight;
+    private JButton b,i,u,red,green,blue,alinLeft,alinCenter,alinRight,save,load;
     private JTextPane hoja;
 
 }
