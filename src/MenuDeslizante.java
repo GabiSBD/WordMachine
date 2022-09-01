@@ -5,49 +5,49 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
-public class PanelDeslizante extends JPanel{
-    private PanelDeslizante() {
-        menuDeslizante = new JToolBar(JToolBar.VERTICAL);
+public class MenuDeslizante extends JToolBar{
+    private MenuDeslizante(int cons) {
+        super(cons);
+       // menuDeslizante = new MenuDeslizante(JToolBar.VERTICAL);
 
         b = new JButton("b", new ImageIcon("B.png"));
-        menuDeslizante.add(b);
+        add(b);
         i = new JButton("i", new ImageIcon("I.png"));
-        menuDeslizante.add(i);
+        add(i);
         u = new JButton("u", new ImageIcon("U.png"));
-        menuDeslizante.add(u);
+        add(u);
 
-        menuDeslizante.addSeparator();
+        addSeparator();
 
         red = new JButton("red", new ImageIcon("red.png"));
-        menuDeslizante.add(red);
+        add(red);
         green = new JButton("green", new ImageIcon("green.png"));
-        menuDeslizante.add(green);
+        add(green);
         blue = new JButton("blue", new ImageIcon("blue.png"));
-        menuDeslizante.add(blue);
+        add(blue);
 
-        menuDeslizante.addSeparator();
+        addSeparator();
 
         alinLeft = new JButton("alinleft", new ImageIcon("Izq.png"));
-        menuDeslizante.add(alinLeft);
+        add(alinLeft);
         alinCenter = new JButton("alincenter", new ImageIcon("Center.png"));
-        menuDeslizante.add(alinCenter);
+        add(alinCenter);
         alinRight = new JButton("alinright", new ImageIcon("Drch.png"));
-        menuDeslizante.add(alinRight);
+        add(alinRight);
 
-        menuDeslizante.addSeparator();
+        addSeparator();
 
         save = new JButton("save", new ImageIcon("save.png"));
-        menuDeslizante.add(save);
+        add(save);
         load = new JButton("load", new ImageIcon("load.png"));
-        menuDeslizante.add(load);
+        add(load);
 
-        add(menuDeslizante);
 
-        setListener();
+        this.setListener();
     }
 
-    public static PanelDeslizante getInstance(){
-        return panelDeslizante==null? panelDeslizante = new PanelDeslizante():panelDeslizante;
+    public static MenuDeslizante getInstance(){
+        return menuDeslizante==null? menuDeslizante = new MenuDeslizante(JToolBar.VERTICAL):menuDeslizante;
     }
 
     private void setListener() {
@@ -78,18 +78,18 @@ public class PanelDeslizante extends JPanel{
                 item.addActionListener(new StyledEditorKit.AlignmentAction("izq", 0));
             else if (item.getText().equalsIgnoreCase("alincenter"))
                 item.addActionListener(new StyledEditorKit.AlignmentAction("izq", 4));
-            else if (item.getText().equalsIgnoreCase("alinright"))
+            else if  (item.getText().equalsIgnoreCase("alinright"))
                 item.addActionListener(new StyledEditorKit.AlignmentAction("drch", 2));
 
-            setFileListener();
-
-            //--------------------borro los text de los botones para que no se reflejen en la interfaz,les puse text porque me ahorro codigo en el setlistener------------------
-            JButton[]quitText={b, i, u, red, green, blue , alinLeft, alinCenter, alinRight, save, load};
-            for(JButton boton:quitText) boton.setText("");
         }
+        setFileListener();
+
+        //--------------------borro los text de los botones para que no se reflejen en la interfaz,les puse text porque me ahorro codigo en el setlistener------------------
+        JButton[]quitText={b, i, u, red, green, blue , alinLeft, alinCenter, alinRight, save, load};
+        for(JButton boton:quitText) boton.setText("");
 
     }
-    public void setFileListener(){
+    private void setFileListener(){
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,8 +127,7 @@ public class PanelDeslizante extends JPanel{
 
     }
     private PanelTexto panelTexto = PanelTexto.getInstance();
-    private JToolBar menuDeslizante;
+    private static MenuDeslizante menuDeslizante;
     private JButton b, i, u, red, green, blue, alinLeft, alinCenter, alinRight, save, load;
 
-    private static PanelDeslizante panelDeslizante;
 }

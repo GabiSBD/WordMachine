@@ -10,7 +10,7 @@ class PanelPrincipal extends JPanel {
 
         add(panelTexto, BorderLayout.CENTER);
 
-        add(panelDeslizante,BorderLayout.WEST);
+        add(menuDeslizante,BorderLayout.WEST);
 
 
     }
@@ -18,6 +18,6 @@ class PanelPrincipal extends JPanel {
 
     private PanelMenu panelMenu= PanelMenu.getInstance();
     private PanelTexto panelTexto= PanelTexto.getInstance();
-    private PanelDeslizante panelDeslizante = PanelDeslizante.getInstance();
+    private MenuDeslizante menuDeslizante = MenuDeslizante.getInstance();
 }
 
