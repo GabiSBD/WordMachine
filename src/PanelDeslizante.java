@@ -42,6 +42,8 @@ public class PanelDeslizante extends JPanel{
         menuDeslizante.add(load);
 
         add(menuDeslizante);
+
+        setListener();
     }
 
     public static PanelDeslizante getInstance(){

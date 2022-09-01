@@ -32,6 +32,8 @@ public class PanelMenu extends JPanel {
         cursiva.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
         negrita.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B,InputEvent.CTRL_DOWN_MASK));
         subrayado.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,InputEvent.CTRL_DOWN_MASK));
+
+        setListener();
     }
 
     public static PanelMenu getInstance(){return panelMenu==null?panelMenu = new PanelMenu():panelMenu;}

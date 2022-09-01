@@ -9,7 +9,7 @@ public class PanelTexto extends JPanel {
 
         JScrollPane scroll= new JScrollPane(hoja);
 
-        panelTexto.add(scroll);
+        add(scroll);
     }
 
     public static PanelTexto getInstance(){
@@ -20,5 +20,5 @@ public class PanelTexto extends JPanel {
     public JTextPane getHoja() { return hoja; }
 
     private JTextPane hoja;
-    private static PanelTexto panelTexto;
+    private static PanelTexto panelTexto ;
 }

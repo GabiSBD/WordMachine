@@ -1,9 +1,5 @@
 import javax.swing.*;
 
-import java.awt.*;
-
-
-
 public class ProcesadorDeTexto {
     public static void main(String[]args){
         Frame procesador= new Frame();
@@ -18,35 +14,7 @@ class Frame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }
-class PanelPrincipal extends JPanel {
-    public PanelPrincipal() {
-        setLayout(new BorderLayout());
 
-
-        add(panelMenu, BorderLayout.NORTH);
-
-
-
-
-        add(panelTexto, BorderLayout.CENTER);
-
-
-
-
-        add(panelDeslizante,BorderLayout.WEST);
-
-
-
-
-
-    }
-
-
-    private PanelMenu panelMenu= PanelMenu.getInstance();
-    private PanelTexto panelTexto= PanelTexto.getInstance();
-
-    private PanelDeslizante panelDeslizante = PanelDeslizante.getInstance();
-    }
 
 
 
