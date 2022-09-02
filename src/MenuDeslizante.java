@@ -56,30 +56,36 @@ public class MenuDeslizante extends JToolBar{
 
         for (AbstractButton item : items) {
 
-            if (item.getText().equalsIgnoreCase("i"))
-                item.addActionListener(new StyledEditorKit.ItalicAction());
+            switch (item.getText()){
+                case "i":
+                    item.addActionListener(new StyledEditorKit.ItalicAction());
+                    break;
+                case "b":
+                    item.addActionListener(new StyledEditorKit.BoldAction());
+                    break;
+                case "u":
+                    item.addActionListener(new StyledEditorKit.UnderlineAction());
+                    break;
+                case "red":
+                    item.addActionListener(new StyledEditorKit.ForegroundAction("rojo", Color.RED));
+                    break;
+                case "green":
+                    item.addActionListener(new StyledEditorKit.ForegroundAction("verde", Color.GREEN));
+                    break;
+                case "blue":
+                    item.addActionListener(new StyledEditorKit.ForegroundAction("blue", Color.BLUE));
+                    break;
+                case "alinleft":
+                    item.addActionListener(new StyledEditorKit.AlignmentAction("izq", 0));
+                    break;
+                case "alincenter":
+                    item.addActionListener(new StyledEditorKit.AlignmentAction("izq", 4));
+                    break;
+                case "alinright":
+                    item.addActionListener(new StyledEditorKit.AlignmentAction("drch", 2));
+                    break;
 
-            else if (item.getText().equalsIgnoreCase("b"))
-                item.addActionListener(new StyledEditorKit.BoldAction());
-
-            else if (item.getText().equalsIgnoreCase("u"))
-                item.addActionListener(new StyledEditorKit.UnderlineAction());
-
-            else if (item.getText().equalsIgnoreCase("red"))
-                item.addActionListener(new StyledEditorKit.ForegroundAction("rojo", Color.RED));
-            else if (item.getText().equalsIgnoreCase("green"))
-                item.addActionListener(new StyledEditorKit.ForegroundAction("verde", Color.GREEN));
-            else if (item.getText().equalsIgnoreCase("blue"))
-                item.addActionListener(new StyledEditorKit.ForegroundAction("blue", Color.BLUE));
-            else if (item.getText().equalsIgnoreCase("red"))
-                item.addActionListener(new StyledEditorKit.ForegroundAction("rojo", Color.RED));
-
-            else if (item.getText().equalsIgnoreCase("alinleft"))
-                item.addActionListener(new StyledEditorKit.AlignmentAction("izq", 0));
-            else if (item.getText().equalsIgnoreCase("alincenter"))
-                item.addActionListener(new StyledEditorKit.AlignmentAction("izq", 4));
-            else if  (item.getText().equalsIgnoreCase("alinright"))
-                item.addActionListener(new StyledEditorKit.AlignmentAction("drch", 2));
+            }
 
         }
         setFileListener();

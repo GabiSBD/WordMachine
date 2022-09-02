@@ -44,26 +44,26 @@ public class PanelMenu extends JPanel {
                 tamagno_18, tamagno_20};
 
         for (AbstractButton item : items) {
-            if(item.getText().equalsIgnoreCase("arial")||item.getText().equalsIgnoreCase("cambria")
-                    ||item.getText().equalsIgnoreCase("verdana")) {
-
-                item.addActionListener(new StyledEditorKit.FontFamilyAction("cambiaFuente",item.getText()));
-
+            switch (item.getText()){
+                case "Arial":
+                case "Cambria":
+                case "Verdana":
+                    item.addActionListener(new StyledEditorKit.FontFamilyAction("cambiaFuente",item.getText()));
+                    break;
+                case "Italic":
+                    item.addActionListener(new StyledEditorKit.ItalicAction());
+                    break;
+                case "Bold":
+                    item.addActionListener(new StyledEditorKit.BoldAction());
+                    break;
+                case "Underline":
+                    item.addActionListener(new StyledEditorKit.UnderlineAction());
+                    break;
+                default:
+                    item.addActionListener(new StyledEditorKit.FontSizeAction("size",Integer.parseInt(item.getText())));
             }
 
-            else if(item.getText().equalsIgnoreCase("italic"))
-                item.addActionListener(new StyledEditorKit.ItalicAction());
-
-            else if(item.getText().equalsIgnoreCase("bold"))
-                item.addActionListener(new StyledEditorKit.BoldAction());
-
-            else if(item.getText().equalsIgnoreCase("underline"))
-                item.addActionListener(new StyledEditorKit.UnderlineAction());
-
-            else  item.addActionListener(new StyledEditorKit.FontSizeAction("size",Integer.parseInt(item.getText())));
         }
-
-
 
     }
     private JMenuBar barraMenu;
