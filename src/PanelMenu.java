@@ -3,6 +3,9 @@ import javax.swing.text.StyledEditorKit;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+/**
+ * Clase que hereda de JPanel, se encarga de construir el menu superior de la aplicacion, implementa el patron Singleton
+ */
 public class PanelMenu extends JPanel {
     private PanelMenu(){
 
@@ -29,6 +32,9 @@ public class PanelMenu extends JPanel {
 
         add(barraMenu);
 
+        /*
+        usamos el metodo setAccelerator para añadidir unos accesos rapido desde el teclado a los botones de estilo
+         */
         cursiva.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
         negrita.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B,InputEvent.CTRL_DOWN_MASK));
         subrayado.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U,InputEvent.CTRL_DOWN_MASK));
@@ -36,9 +42,16 @@ public class PanelMenu extends JPanel {
         this.setListener();
     }
 
+    /**
+     * Funcion necesaria para el patron Singleton, instancia el objeto PanelMenu de esta misma clase o devuelve
+     * la instancia creada anteriormente.
+     * @return PanelMenu
+     */
     public static PanelMenu getInstance(){return panelMenu==null?panelMenu = new PanelMenu():panelMenu;}
 
-
+    /**
+     * Procedimiento que se encarga de añadir los actionLstener a los oyentes y asi gestionar los eventos.
+     */
     private  void setListener() {
         AbstractButton[]items= {arial, cambria, verdana, cursiva, negrita, subrayado, tamagno_12, tamagno_16,
                 tamagno_18, tamagno_20};
@@ -71,4 +84,5 @@ public class PanelMenu extends JPanel {
     private JMenuItem arial,cambria , verdana, negrita, cursiva,subrayado;
     private JRadioButton tamagno_12, tamagno_16, tamagno_18, tamagno_20;
     private static PanelMenu panelMenu;
+
 }

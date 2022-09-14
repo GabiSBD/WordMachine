@@ -5,10 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
+/**
+ * Clase que hereda de JToolbar, esta clase es algo diferente a las demas ya que no es un panel al uso si no un menu que
+ * podremos mover por la pantalla o del PC o por el Frame de la aplicación, contiene las acciones de estilo,
+ * alineacion de texto, clor de la fuente, y guardado del texto en un fichero y carga de ficheros de texto.
+ * Por defecto se guardan y cargan dentro de la carpeta src del proyecto, ya que es una prueba, pero cuando te piden el
+ * nombre y extension del fichero al guardar o cargar deberia funcionar si ponemos la ruta deseada para el fichero.
+ */
 public class MenuDeslizante extends JToolBar{
+    /**
+     * metodo constructor que usaremos con el metodo getInstance()
+     * @param cons: se lo otroga el metodo getInstance() automaticamente. corresponderia a la disposicion del JToolBar
+     */
     private MenuDeslizante(int cons) {
         super(cons);
-       // menuDeslizante = new MenuDeslizante(JToolBar.VERTICAL);
+
 
         b = new JButton("b", new ImageIcon("B.png"));
         add(b);
@@ -46,10 +57,20 @@ public class MenuDeslizante extends JToolBar{
         this.setListener();
     }
 
+    /**
+     * Funcion necesaria para el patron Singleton, instancia el objeto menuDeslizante de esta misma clase o devuelve
+     * la instancia creada anteriormente.
+     * @return MenuDeslizante
+     */
     public static MenuDeslizante getInstance(){
         return menuDeslizante==null? menuDeslizante = new MenuDeslizante(JToolBar.VERTICAL):menuDeslizante;
     }
 
+    /**
+     * Procedimiento que se encarga de añadir los actionLstener a los oyentes y asi gestionar los eventos, ademas contine
+     * encapsulado el procedimiento setFileListener().
+     * @see MenuDeslizante setFileListener()
+     */
     private void setListener() {
         AbstractButton[] items = {b, i, u, red, green, blue, alinLeft, alinCenter, alinRight};
 
@@ -88,13 +109,22 @@ public class MenuDeslizante extends JToolBar{
             }
 
         }
+
         setFileListener();
 
-        //--------------------borro los text de los botones para que no se reflejen en la interfaz,les puse text porque me ahorro codigo en el setlistener------------------
+        /*borro los text de los botones para que no se reflejen en la interfaz grafica,les puse text porque me convenia
+        * paradesarrollar el codigo de este metodo*/
+
         JButton[]quitText={b, i, u, red, green, blue , alinLeft, alinCenter, alinRight, save, load};
         for(JButton boton:quitText) boton.setText("");
 
     }
+
+    /**
+     * Procedimiento que coloca las acciones de guardar y cargar archivos a los oyentes(botones save y load).se encuentra
+     * anidado dentro de setListener() de esta clase.
+     * @see MenuDeslizante setListener()
+     */
     private void setFileListener(){
         save.addActionListener(new ActionListener() {
             @Override
