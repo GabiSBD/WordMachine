@@ -23,8 +23,10 @@ public class MenuDeslizante extends JToolBar{
 
         b = new JButton("b", new ImageIcon("B.png"));
         add(b);
+
         i = new JButton("i", new ImageIcon("I.png"));
         add(i);
+
         u = new JButton("u", new ImageIcon("U.png"));
         add(u);
 
@@ -32,8 +34,10 @@ public class MenuDeslizante extends JToolBar{
 
         red = new JButton("red", new ImageIcon("red.png"));
         add(red);
+
         green = new JButton("green", new ImageIcon("green.png"));
         add(green);
+
         blue = new JButton("blue", new ImageIcon("blue.png"));
         add(blue);
 
@@ -41,8 +45,10 @@ public class MenuDeslizante extends JToolBar{
 
         alinLeft = new JButton("alinleft", new ImageIcon("Izq.png"));
         add(alinLeft);
+
         alinCenter = new JButton("alincenter", new ImageIcon("Center.png"));
         add(alinCenter);
+
         alinRight = new JButton("alinright", new ImageIcon("Drch.png"));
         add(alinRight);
 
@@ -50,6 +56,7 @@ public class MenuDeslizante extends JToolBar{
 
         save = new JButton("save", new ImageIcon("save.png"));
         add(save);
+
         load = new JButton("load", new ImageIcon("load.png"));
         add(load);
 

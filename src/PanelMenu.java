@@ -11,24 +11,50 @@ public class PanelMenu extends JPanel {
 
         barraMenu= new JMenuBar();
 
-        fuente= new JMenu("Fuente"); barraMenu.add(fuente);
-        estilo= new JMenu("Estilo"); barraMenu.add(estilo);
-        tamagno= new JMenu("Tamaño"); barraMenu.add(tamagno);
+        fuente= new JMenu("Fuente");
+        barraMenu.add(fuente);
 
-        arial= new JMenuItem("Arial"); fuente.add(arial);
-        cambria= new JMenuItem("Cambria"); fuente.add(cambria);
-        verdana= new JMenuItem("Verdana"); fuente.add(verdana);
+        estilo= new JMenu("Estilo");
+        barraMenu.add(estilo);
 
-        negrita= new JMenuItem("Bold",new ImageIcon("B.png")); estilo.add(negrita);
-        cursiva= new JMenuItem("Italic", new ImageIcon("I.png")); estilo.add(cursiva);
-        subrayado= new JMenuItem("Underline", new ImageIcon("U.png")); estilo.add(subrayado);
+        tamagno= new JMenu("Tamaño");
+        barraMenu.add(tamagno);
+
+        arial= new JMenuItem("Arial");
+        fuente.add(arial);
+
+        cambria= new JMenuItem("Cambria");
+        fuente.add(cambria);
+
+        verdana= new JMenuItem("Verdana");
+        fuente.add(verdana);
+
+        negrita= new JMenuItem("Bold",new ImageIcon("B.png"));
+        estilo.add(negrita);
+
+        cursiva= new JMenuItem("Italic", new ImageIcon("I.png"));
+        estilo.add(cursiva);
+
+        subrayado= new JMenuItem("Underline", new ImageIcon("U.png"));
+        estilo.add(subrayado);
 
         ButtonGroup tamagnogrupo=new ButtonGroup();
 
-        tamagno_12= new JRadioButton("12"); tamagnogrupo.add(tamagno_12); tamagno.add(tamagno_12);
-        tamagno_16= new JRadioButton("16"); tamagnogrupo.add(tamagno_16); tamagno.add(tamagno_16);
-        tamagno_18= new JRadioButton("18"); tamagnogrupo.add(tamagno_18); tamagno.add(tamagno_18);
-        tamagno_20= new JRadioButton("20"); tamagnogrupo.add(tamagno_20); tamagno.add(tamagno_20);
+        tamagno_12= new JRadioButton("12");
+        tamagnogrupo.add(tamagno_12);
+        tamagno.add(tamagno_12);
+
+        tamagno_16= new JRadioButton("16");
+        tamagnogrupo.add(tamagno_16);
+        tamagno.add(tamagno_16);
+
+        tamagno_18= new JRadioButton("18");
+        tamagnogrupo.add(tamagno_18);
+        tamagno.add(tamagno_18);
+
+        tamagno_20= new JRadioButton("20");
+        tamagnogrupo.add(tamagno_20);
+        tamagno.add(tamagno_20);
 
         add(barraMenu);
 
