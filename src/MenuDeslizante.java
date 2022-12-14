@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.net.URL;
 
 /**
  * Clase que hereda de JToolbar, esta clase es algo diferente a las demas ya que no es un panel al uso si no un menu que
@@ -20,44 +21,54 @@ public class MenuDeslizante extends JToolBar{
     private MenuDeslizante(int cons) {
         super(cons);
 
-
-        b = new JButton("b", new ImageIcon("B.png"));
+        URL imagenBold = MenuDeslizante.class.getResource("B.png");
+        b = new JButton("b", new ImageIcon(imagenBold));
         add(b);
-
-        i = new JButton("i", new ImageIcon("I.png"));
+        
+        URL imagenItalic = MenuDeslizante.class.getResource("I.png");
+        i = new JButton("i", new ImageIcon(imagenItalic));
         add(i);
-
-        u = new JButton("u", new ImageIcon("U.png"));
+        
+        URL imagenUnder = MenuDeslizante.class.getResource("U.png");
+        u = new JButton("u", new ImageIcon(imagenUnder));
         add(u);
 
         addSeparator();
-
-        red = new JButton("red", new ImageIcon("red.png"));
+        
+        URL imagenRed = MenuDeslizante.class.getResource("red.png");
+        red = new JButton("red", new ImageIcon(imagenRed));
         add(red);
 
-        green = new JButton("green", new ImageIcon("green.png"));
+        URL imagenGreen = MenuDeslizante.class.getResource("green.png");
+        green = new JButton("green", new ImageIcon(imagenGreen));
         add(green);
-
-        blue = new JButton("blue", new ImageIcon("blue.png"));
+        
+        URL imagenBlue = MenuDeslizante.class.getResource("blue.png");
+        blue = new JButton("blue", new ImageIcon(imagenBlue));
         add(blue);
 
         addSeparator();
-
-        alinLeft = new JButton("alinleft", new ImageIcon("Izq.png"));
+        
+        URL imagenIzq = MenuDeslizante.class.getResource("Izq.png");
+        alinLeft = new JButton("alinleft", new ImageIcon(imagenIzq));
         add(alinLeft);
-
-        alinCenter = new JButton("alincenter", new ImageIcon("Center.png"));
+        
+        URL imagenCenter = MenuDeslizante.class.getResource("Center.png");
+        alinCenter = new JButton("alincenter", new ImageIcon(imagenCenter));
         add(alinCenter);
-
-        alinRight = new JButton("alinright", new ImageIcon("Drch.png"));
+        
+        URL imagenDrch = MenuDeslizante.class.getResource("Drch.png");
+        alinRight = new JButton("alinright", new ImageIcon(imagenDrch));
         add(alinRight);
 
         addSeparator();
-
-        save = new JButton("save", new ImageIcon("save.png"));
+        
+        URL imagenSave = MenuDeslizante.class.getResource("save.png");
+        save = new JButton("save", new ImageIcon(imagenSave));
         add(save);
-
-        load = new JButton("load", new ImageIcon("load.png"));
+        
+        URL imagenLoad = MenuDeslizante.class.getResource("load.png");
+        load = new JButton("load", new ImageIcon(imagenLoad));
         add(load);
 
 
